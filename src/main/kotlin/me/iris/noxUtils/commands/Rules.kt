@@ -18,7 +18,7 @@ public class Rules {
         public var RuleCommands: MutableList<CommandAPICommand> = mutableListOf()
     }
 
-    public var booleanServerRules: MutableMap<String, Int> = mutableMapOf(
+    private var booleanServerRules: MutableMap<String, Int> = mutableMapOf(
         "disableSpinAttackCollision" to ServerRuleIndices.DISABLE_SPIN_ATTACK_COLLISIONS,
         "cameraLocked" to ServerRuleIndices.CAMERA_LOCKED,
         "disableVanillaMusic" to ServerRuleIndices.DISABLE_VANILLA_MUSIC,
@@ -30,17 +30,17 @@ public class Rules {
         "disableMapUi" to ServerRuleIndices.DISABLE_MAP_UI
     )
 
-    public var integerServerRules: MutableMap<String, Int> = mutableMapOf(
+    private var integerServerRules: MutableMap<String, Int> = mutableMapOf(
         "heldItemNameOffset" to ServerRuleIndices.HELD_ITEM_NAME_OFFSET,
         "riptideCoyoteTime" to ServerRuleIndices.RIPTIDE_COYOTE_TIME
     )
 
-    public var itemStackServerRules: MutableMap<String, Int> = mutableMapOf(
+    private var itemStackServerRules: MutableMap<String, Int> = mutableMapOf(
         "handItemOverride" to ServerRuleIndices.HAND_ITEM_OVERRIDE,
         "customCreativeItems" to ServerRuleIndices.CUSTOM_CREATIVE_ITEMS
     )
 
-    public var allRules: MutableMap<String, Int> = mutableMapOf()
+    private var allRules: MutableMap<String, Int> = mutableMapOf()
 
     public fun registerCommands() {
         allRules.putAll(booleanServerRules)

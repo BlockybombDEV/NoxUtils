@@ -6,6 +6,9 @@ import com.noxcrew.noxesium.paper.api.rule.RemoteServerRule
 import me.iris.noxUtils.NoxUtils
 import org.bukkit.entity.Player
 
+/**
+ * Reset the value of a server rule for a [Player]
+ */
 public class ResetRules(private val player: Player) {
 
     private var manager = NoxUtils.noxesiumManager

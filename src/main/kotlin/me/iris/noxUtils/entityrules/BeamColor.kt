@@ -3,12 +3,15 @@ package me.iris.noxUtils.entityrules
 import com.noxcrew.noxesium.api.protocol.rule.EntityRuleIndices
 import com.noxcrew.noxesium.paper.api.rule.RemoteServerRule
 import me.iris.noxUtils.NoxUtils
+import org.bukkit.entity.Entity
+import org.bukkit.entity.EntityType
 import org.bukkit.entity.Guardian
+import org.bukkit.entity.EnderCrystal
 import java.awt.Color
 import java.util.*
 
 public class BeamColor {
-
+    // Only works for minecraft:guardian, minecraft:elder_guardian and minecraft:end_crystal
     private val entityManager = NoxUtils.entityRuleManager
 
     // Preset colors for Skript
@@ -30,19 +33,44 @@ public class BeamColor {
         public val DARK_GRAY: Optional<Color> = Optional.of(Color.DARK_GRAY)
     }
 
-    // Will be updated to support minecraft:end_crystal once Paper 1.21.2 comes out
-    public fun setBeamColor(guardian: Guardian, color: Optional<Color>) {
-        // Set the beam color
-        var rule: RemoteServerRule<Any>? = entityManager.getEntityRule(guardian, EntityRuleIndices.BEAM_COLOR)
+    /**
+     * Set the beam color for a [Guardian] or [EnderCrystal] (also disables the bubbles on guardian beams)
+     */
+    public fun setBeamColor(entity: Entity, color: Optional<Color>) {
+        if (entity.type != EntityType.GUARDIAN && entity.type != EntityType.END_CRYSTAL) return
+        var rule: RemoteServerRule<Any>? = entityManager.getEntityRule(entity, EntityRuleIndices.BEAM_COLOR)
         rule!!.setValue(color)
 
-        // Hide the beam bubbles
-        rule = entityManager.getEntityRule(guardian, EntityRuleIndices.DISABLE_BUBBLES)
+        // Hide the beam bubbles for Guardians
+        if (entity.type != EntityType.GUARDIAN) return
+        rule = entityManager.getEntityRule(entity, EntityRuleIndices.DISABLE_BUBBLES)
         rule!!.setValue(true)
     }
 
-    public fun resetBeamColor(guardian: Guardian) {
-        val rule: RemoteServerRule<Any>? = entityManager.getEntityRule(guardian, EntityRuleIndices.BEAM_COLOR)
+    /**
+     * Set the beam fade/gradient for a [Guardian] or [EnderCrystal]
+     */
+    public fun setBeamFade(entity: Entity, color: Optional<Color>) {
+        if (entity.type != EntityType.GUARDIAN && entity.type != EntityType.END_CRYSTAL) return
+        val rule: RemoteServerRule<Any>? = entityManager.getEntityRule(entity, EntityRuleIndices.BEAM_COLOR_FADE)
+        rule!!.setValue(color)
+    }
+
+    /**
+     * Reset the beam color for a [Guardian] or [EnderCrystal]
+     */
+    public fun resetBeamColor(entity: Entity) {
+        if (entity.type != EntityType.GUARDIAN && entity.type != EntityType.END_CRYSTAL) return
+        val rule: RemoteServerRule<Any>? = entityManager.getEntityRule(entity, EntityRuleIndices.BEAM_COLOR)
+        rule!!.reset()
+    }
+
+    /**
+     * Reset the beam fade/gradient for a [Guardian] or [EnderCrystal]
+     */
+    public fun resetBeamFade(entity: Entity) {
+        if (entity.type != EntityType.GUARDIAN && entity.type != EntityType.END_CRYSTAL) return
+        val rule: RemoteServerRule<Any>? = entityManager.getEntityRule(entity, EntityRuleIndices.BEAM_COLOR_FADE)
         rule!!.reset()
     }
 

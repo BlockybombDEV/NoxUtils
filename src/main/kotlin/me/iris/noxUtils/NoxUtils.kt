@@ -10,7 +10,6 @@ import dev.jorel.commandapi.kotlindsl.subcommand
 import fr.skytasul.glowingentities.GlowingBlocks
 import fr.skytasul.glowingentities.GlowingEntities
 import me.iris.noxUtils.commands.Rules
-import me.iris.noxUtils.serverrules.SetRules
 import org.bukkit.command.CommandSender
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
@@ -58,6 +57,7 @@ public class NoxUtils : JavaPlugin() {
     public fun getInstance(): NoxUtils {
         return instance
     }
+
 
     public fun getEntityGlow(): GlowingEntities {
         return glowingEntities

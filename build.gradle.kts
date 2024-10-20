@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "me.iris"
-version = "2.1.0"
+version = "2.2.0-SNAPSHOT"
 
 plugins {
     kotlin("jvm") version "1.9.24"
@@ -28,8 +28,8 @@ dependencies {
     compileOnly("dev.jorel:commandapi-bukkit-core:9.5.2")
     implementation("fr.skytasul:glowingentities:1.3.5")
     implementation("fr.skytasul:glowingentities:1.3.5")
-    implementation("com.noxcrew.noxesium:api:2.3.3")
-    implementation("com.noxcrew.noxesium:paper:2.3.3")
+    implementation("com.noxcrew.noxesium:api:2.4.0-SNAPSHOT")
+    implementation("com.noxcrew.noxesium:paper:2.4.0-SNAPSHOT")
     implementation("dev.jorel:commandapi-bukkit-kotlin:9.5.2")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
 

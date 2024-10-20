@@ -1,5 +1,5 @@
 name: NoxUtils
-version: '2.1.0'
+version: '2.2.0-SNAPSHOT'
 main: me.iris.noxUtils.NoxUtils
 api-version: '1.21'
 authors: [ Iris ]

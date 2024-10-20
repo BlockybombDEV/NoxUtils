@@ -8,6 +8,9 @@ import me.iris.noxUtils.NoxUtils.Companion.customCreativeItems
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
+/**
+ * Set the value of a server rule for a [Player]
+ */
 public open class SetRules(private val player: Player) {
 
     private var manager = NoxUtils.noxesiumManager
